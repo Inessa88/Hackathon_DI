@@ -7,50 +7,69 @@ const movies = {
     'novelties': ['The Good nurse','Blackout','Luckiest Girl Alive', 'All the Old Knives', 'A Man from Toronto', 'Marry Me', 'Home Team', 'The Adam Project', 'Umma', 'Unhuman'],
 };
 
-let chosen = [];
-// let genres = ['comedy', 'drama', 'romance', 'thriller', 'art', 'novelties'];
+let chosenMovies = [];
 
 function createGenreButtons (){
     
     const div = document.getElementById('genres');
-    for (let movie in movies){
+    for (let movieType in movies){
         let genreButton = document.createElement('button');
-        movie = movie.charAt(0).toUpperCase() + movie.slice(1);//capitalization
-        genreButton.innerText = movie; 
-        // genreButton.test = movie;
+        let buttonInnerText = movieType.charAt(0).toUpperCase() + movieType.slice(1); //capitalization
+        genreButton.innerText = buttonInnerText; 
+        genreButton.movieType = movieType;
         div.appendChild(genreButton);
-        // genreButton.addEventListener('click',randomMovie);
+        genreButton.addEventListener('click', randomMovie);
     };
 };
 
 createGenreButtons ();
 
 
-// function randomMovie(e){
-//     let test = e.target.test
-//     random_item(movies[test])
-// }
+function randomMovie(e){
+    let movieType = e.target.movieType
+    random_item(movies[movieType])
+}
 
+function decisionMaker(){
+    let finalChoiceMovie = chosenMovies[Math.floor(Math.random()*chosenMovies.length)];
+    let finalChoiceDiv = document.getElementById('final_choice');
+    let paragraphTitle = document.createElement('p');
+    paragraphTitle.innerText = 'This is what you gonna watch tonight:';
+    finalChoiceDiv.appendChild(paragraphTitle);
+    let paragraphChoice = document.createElement('h3');
+    paragraphChoice.innerText = finalChoiceMovie;
+    finalChoiceDiv.appendChild(paragraphChoice);
+}
 
-// function random_item(items){  
-//     let chosenMovie;
-//     do {
-//         chosenMovie = items[Math.floor(Math.random()*items.length)];
-//         chosen.push(chosenMovie);
-//     } while (!chosen.includes(chosenMovie));
-        
-// }
+function random_item(items){
+    if (chosenMovies.length < 3) {
+        let chosenMovie;
+        while (true) {
+            chosenMovie = items[Math.floor(Math.random()*items.length)];
+            if (!chosenMovies.includes(chosenMovie)) {
+                chosenMovies.push(chosenMovie);
+                let chosenThreeMoviesDiv = document.getElementById('chosen_3_movies');
+                let ol = document.createElement('ol');
+                for (let movie of chosenMovies) {
+                    let li = document.createElement('li');
+                    li.innerText = movie;
+                    ol.appendChild(li);
+                }
+                chosenThreeMoviesDiv.innerText = ''
+                let p = document.createElement('p');
+                p.innerText = 'Options you chose:'
+                chosenThreeMoviesDiv.appendChild(p);
+                chosenThreeMoviesDiv.appendChild(ol);
+                if (chosenMovies.length === 3) {
+                    let decideDiv = document.getElementById('decide');
+                    let decideButton = document.createElement('button');
+                    decideButton.innerText = 'DECIDE'; 
+                    decideDiv.appendChild(decideButton);
+                    decideButton.addEventListener('click', decisionMaker);
+                }
+                break
+            }
+        }
+    }
+}
 
-// var items = [254, 45, 212, 365, 2543];
-// console.log(random_item(items));
-// function createButton(){
-//     for (let i = 0; i < bg_colors.length; i++) {
-//         let coloredDiv = document.createElement("div");
-//         coloredDiv.style.backgroundColor = bg_colors[i];
-//         coloredDiv.className = 'coloredBox';
-//         sectionLeft.appendChild(coloredDiv);
-//         coloredDiv.addEventListener('click', setCurrentColor);
-        
-//     }
-
-// }
