@@ -23,7 +23,7 @@ function createGenreButtons (){
     };
 };
 
-createGenreButtons ()
+createGenreButtons ();
 
 
 // function randomMovie(e){
