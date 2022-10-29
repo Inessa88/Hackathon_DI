@@ -31,14 +31,40 @@ function randomMovie(e){
 }
 
 function decisionMaker(){
-    let finalChoiceMovie = chosenMovies[Math.floor(Math.random()*chosenMovies.length)];
+    setTimeout(
+        function(){
+            let finalChoiceMovie = chosenMovies[Math.floor(Math.random()*chosenMovies.length)];
+            let finalChoiceDiv = document.getElementById('final_choice');
+            let paragraphTitle = document.createElement('p');
+            paragraphTitle.innerText = 'This is what you gonna watch tonight:';
+            finalChoiceDiv.appendChild(paragraphTitle);
+            let paragraphChoice = document.createElement('h3');
+            paragraphChoice.innerText = finalChoiceMovie;
+            finalChoiceDiv.appendChild(paragraphChoice);
+        }
+    , 5000);
+}
+
+
+let countDownInterval;
+function waitingGap(){
+    countDownInterval = setInterval(countDown,1000);
+}
+
+let count = 3;
+function countDown(){
     let finalChoiceDiv = document.getElementById('final_choice');
-    let paragraphTitle = document.createElement('p');
-    paragraphTitle.innerText = 'This is what you gonna watch tonight:';
-    finalChoiceDiv.appendChild(paragraphTitle);
-    let paragraphChoice = document.createElement('h3');
-    paragraphChoice.innerText = finalChoiceMovie;
-    finalChoiceDiv.appendChild(paragraphChoice);
+    let waitingHeading = document.createElement('h1');
+    
+    if (count > 0){
+        finalChoiceDiv.innerText = ''
+        waitingHeading.innerText = 'Wait for it...' + ' ' + count;
+        finalChoiceDiv.appendChild(waitingHeading);
+    } else {
+        clearInterval(countDownInterval);
+        finalChoiceDiv.innerText = ''
+    }
+    count--
 }
 
 function random_item(items){
@@ -66,6 +92,7 @@ function random_item(items){
                     decideButton.innerText = 'DECIDE'; 
                     decideDiv.appendChild(decideButton);
                     decideButton.addEventListener('click', decisionMaker);
+                    decideButton.addEventListener('click', waitingGap);
                 }
                 break
             }
