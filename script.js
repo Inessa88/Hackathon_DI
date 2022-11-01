@@ -17,6 +17,7 @@ function createGenreButtons (){
         let buttonInnerText = movieType.charAt(0).toUpperCase() + movieType.slice(1); //capitalization
         genreButton.innerText = buttonInnerText; 
         genreButton.movieType = movieType;
+        genreButton.setAttribute("id","btn");
         div.appendChild(genreButton);
         genreButton.addEventListener('click', randomMovie);
     };
@@ -26,11 +27,17 @@ createGenreButtons ();
 
 
 function randomMovie(e){
-    let movieType = e.target.movieType
-    random_item(movies[movieType])
+    let movieType = e.target.movieType;
+    random_item(movies[movieType]);
+    const audio = new Audio("jump.mp3");
+    audio.play();
 }
 
 function decisionMaker(){
+    const audio = new Audio("jump.mp3");
+    audio.play();
+    let decideButton = document.getElementById('decide_button');
+    decideButton.setAttribute('disabled', true);
     setTimeout(
         function(){
             let finalChoiceMovie = chosenMovies[Math.floor(Math.random()*chosenMovies.length)];
@@ -38,11 +45,11 @@ function decisionMaker(){
             let paragraphTitle = document.createElement('p');
             paragraphTitle.innerText = 'This is what you gonna watch tonight:';
             finalChoiceDiv.appendChild(paragraphTitle);
-            let paragraphChoice = document.createElement('h3');
+            let paragraphChoice = document.createElement('h2');
             paragraphChoice.innerText = finalChoiceMovie;
             finalChoiceDiv.appendChild(paragraphChoice);
         }
-    , 5000);
+    , 4050);
 }
 
 
@@ -62,9 +69,11 @@ function countDown(){
         finalChoiceDiv.appendChild(waitingHeading);
     } else {
         clearInterval(countDownInterval);
-        finalChoiceDiv.innerText = ''
+        finalChoiceDiv.innerText = '';
+        const audio = new Audio("music.mp3");
+        audio.play()
     }
-    count--
+    count--;
 }
 
 function random_item(items){
@@ -83,13 +92,15 @@ function random_item(items){
                 }
                 chosenThreeMoviesDiv.innerText = ''
                 let p = document.createElement('p');
-                p.innerText = 'Options you chose:'
+                p.setAttribute("id","options");
+                p.innerText = 'Options you chose:';
                 chosenThreeMoviesDiv.appendChild(p);
                 chosenThreeMoviesDiv.appendChild(ol);
                 if (chosenMovies.length === 3) {
                     let decideDiv = document.getElementById('decide');
                     let decideButton = document.createElement('button');
-                    decideButton.innerText = 'DECIDE'; 
+                    decideButton.innerText = 'DECIDE';
+                    decideButton.setAttribute('id', 'decide_button');
                     decideDiv.appendChild(decideButton);
                     decideButton.addEventListener('click', decisionMaker);
                     decideButton.addEventListener('click', waitingGap);

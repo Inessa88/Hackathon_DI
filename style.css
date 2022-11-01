@@ -1,0 +1,130 @@
+*{
+    padding: 0px;
+    margin: 0px;
+   
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+html,h1,h3,h2,p,a,.btn,span, div, ol, li {
+    font-family: "Raleway";
+    
+};
+
+h1,h3,h2 p, div, section {
+    color:white;
+}
+
+
+body{
+    position: relative; 
+    height: 98vh;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    background-image: url('picture4.jpg');
+    background-size: cover;
+}
+
+body::before{
+    content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.2;
+    z-index: -2;
+   
+}
+
+#questions{
+    align-items: center;
+    text-align: center;
+    margin-top: 5vh;
+    color: white;
+
+}
+
+#genres{
+    align-items: center;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+#btn{
+    background-color:rgb(73, 148, 148);
+    color:aliceblue;
+    padding: 10px 5px;
+    margin: 5px 20px;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 10px;
+    width: 120px; 
+}
+
+
+#chosen_3_movies{
+    align-items: center;
+    text-align: center;
+    margin-top: 5vh;
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+
+}
+
+ol{
+    margin-top: 3vh;
+   
+}
+
+#decide{
+    align-items: center;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+#decide>button{
+    background-color:rgb(73, 148, 148);
+    color:aliceblue;
+    padding: 20px 30px;
+    font-size: 30px;
+    font-weight: 800;
+    border-radius: 10px
+
+}
+
+#final_choice{
+    align-items: center;
+    text-align: center;
+    margin-top: 3vh;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(73, 148, 148);
+    color: white;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px 0px;
+      
+}
+
+#popcorn{
+    text-align: left;
+    padding-left: 10px;
+}
+
+#wolt{
+    text-align: right;
+    padding-right: 10px;
+}
