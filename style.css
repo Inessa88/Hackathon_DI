@@ -106,7 +106,8 @@ ol{
 }
 
 footer{
-    position: fixed;
+    /* position: fixed; in this case the position fixed for the button makes the user not to be able to see the movie*/ 
+    /* You  can set the height for the body or your main div to 90vh and then the footer to the rest 10vh outside the body*/
     left: 0;
     bottom: 0;
     width: 100%;
