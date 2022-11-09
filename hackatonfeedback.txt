@@ -1,0 +1,15 @@
+
+Hello Inesa this is your Hackaton feedback.
+I liked your project seems like a good features to decide wath to watch. You had implemented very well the 
+javascript concepts viewed in the course using DOM manipulation and adding and deleting events to your elements.
+Liked a lot the sound that you added to the page. Nice code and also well implementation of array and objects methods.
+In the future you will be able to get information from an API and able to display the options for your movies
+directly from it. Also liked the styling of the page but you only need to fix the sizing of your elements to 
+use a fixed footer than not block the view of the user. 
+
+COngratulations on your project. Well done.
+
+
+feel free to reach me if there is another question. 
+
+
